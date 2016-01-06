@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} %-5level %logger{100} - %msg%n</Pattern>
+		</encoder>
+	</appender>
+	<logger name="org.hibernate.type" level="ALL" />
+	<logger name="org.hibernate" level="DEBUG" />
+	<logger name="org.hibernate.SQL" level="ALL" />
+	<logger name="org.hibernate.jdbc" level="ALL" />
+	<logger name="org.hibernate.type" level="TRACE" />
+	<root level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="ConsolePU" transaction-type="RESOURCE_LOCAL">
+		<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+		<class>org.hibernate.envers.demo.Address</class>
+		<class>org.hibernate.envers.demo.Person</class>
+		<exclude-unlisted-classes />
+		<properties>
+<!-- 			<property name="hibernate.default_schema" value="envers_console_eclipse" /> -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" /> -->
+<!-- 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/envers_console" /> -->
+<!-- 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> -->
+<!-- 			<property name="hibernate.connection.username" value="root" /> -->
+<!-- 			<property name="hibernate.connection.password" value="" /> -->
+            
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			<!--<property name="hibernate.show_sql" value="true"/> <property name="hibernate.format_sql" value="true"/> -->
+			<!-- <property name="hibernate.ejb.event.post-insert" value="org.jboss.envers.event.VersionsEventListener" /> -->
+			<!-- <property name="hibernate.ejb.event.post-update" value="org.jboss.envers.event.VersionsEventListener" /> -->
+			<!-- <property name="hibernate.ejb.event.post-delete" value="org.jboss.envers.event.VersionsEventListener" /> -->
+
+			<!-- Autodetection des classes annotées @Entity -->
+			<property name="hibernate.archive.autodetection" value="class"/>
+			<!-- Configuration Envers -->
+<!-- 			<property name="org.hibernate.envers.audit_table_suffix" value="_version"/> -->
+
+<!-- 			<property name="hibernate.ejb.event.post-insert" value="org.hibernate.ejb.event.EJB3PostInsertEventListener,org.hibernate.envers.event.AuditEventListener" /> -->
+<!-- 			<property name="hibernate.ejb.event.post-update" value="org.hibernate.ejb.event.EJB3PostUpdateEventListener,org.hibernate.envers.event.AuditEventListener" /> -->
+<!-- 			<property name="hibernate.ejb.event.post-delete" value="org.hibernate.ejb.event.EJB3PostDeleteEventListener,org.hibernate.envers.event.AuditEventListener" /> -->
+<!-- 			<property name="hibernate.ejb.event.pre-collection-update" value="org.hibernate.envers.event.AuditEventListener" /> -->
+<!-- 			<property name="hibernate.ejb.event.pre-collection-remove" value="org.hibernate.envers.event.AuditEventListener" /> -->
+<!-- 			<property name="hibernate.ejb.event.post-collection-recreate" value="org.hibernate.envers.event.AuditEventListener" /> -->
+		</properties>
+	</persistence-unit>
+</persistence>
