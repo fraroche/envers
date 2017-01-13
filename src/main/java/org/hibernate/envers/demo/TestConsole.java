@@ -498,14 +498,16 @@ public class TestConsole {
 	private void populateTestData() {
 		this.entityManager.getTransaction().begin();
 
+		
 		if (!this.hasData()) {
+			
 			Person p1 = new Person();
 			Person p2 = new Person();
 			Person p3 = new Person();
 
 			Address a1 = new Address();
 			Address a2 = new Address();
-
+			
 			p1.setName("James");
 			p1.setSurname("Bond");
 			p1.setAddress(a1);
@@ -530,7 +532,7 @@ public class TestConsole {
 			a2.setPersons(new HashSet<Person>());
 			a2.getPersons().add(p2);
 			a2.getPersons().add(p3);
-
+			
 			this.entityManager.persist(a1);
 			this.entityManager.persist(a2);
 
@@ -540,6 +542,31 @@ public class TestConsole {
 
 			System.out.println("The DB was populated with example data.");
 		}
+		
+		Person p1 = this.entityManager.find(Person.class, 1);
+		Person p2 = this.entityManager.find(Person.class, 2);
+		
+//		Animal pet1 = new Animal();
+//		Animal pet2 = new Animal();
+//
+//		pet1.setName("medor");
+////		pet1.setRace("chien");
+//		pet1.setOwner(p1);
+//		
+//		pet2.setName("rufus");
+////		pet2.setRace("chat");
+//		pet2.setOwner(p2);
+		
+		Animal pet1 = new Animal(new AnimalId("medor", p1));
+		Animal pet2 = new Animal(new AnimalId("rufus", p2));
+		
+		pet1.setRace("chien");
+		pet2.setRace("chat");
+		
+		this.entityManager.persist(pet1);
+		this.entityManager.persist(pet2);
+		
+		
 		this.entityManager.flush();
 		this.entityManager.clear();
 		this.entityManager.getTransaction().commit();

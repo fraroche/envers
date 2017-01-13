@@ -4,6 +4,7 @@
 		<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
 		<class>org.hibernate.envers.demo.Address</class>
 		<class>org.hibernate.envers.demo.Person</class>
+		<class>org.hibernate.envers.demo.Animal</class>
 		<exclude-unlisted-classes />
 		<properties>
 <!-- 			<property name="hibernate.default_schema" value="envers_console_eclipse" /> -->

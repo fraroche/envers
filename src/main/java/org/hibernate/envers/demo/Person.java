@@ -22,13 +22,17 @@
 package org.hibernate.envers.demo;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.envers.Audited;
 
@@ -38,18 +42,67 @@ import org.hibernate.envers.Audited;
 @Entity
 public class Person {
 
-	@Entity(name="Pet")
-	@IdClass(PetId.class)
-	public static class Pet {
-		@Id String name;
-		@Id @ManyToOne @JoinColumn(name="OWNER_ID") 
-		Person owner;
-	}
+//	@Entity(name="Pet")
+//	@IdClass(PetId.class)
+//	public static class Pet {
+//		@Id String name;
+//		@Id @ManyToOne @JoinColumn(name="OWNER_ID") 
+//		Person owner;
+//	}
+//
+//	public class PetId implements Serializable {
+//		String name;
+//		int owner;
+//	}
+	
 
-	public class PetId implements Serializable {
-		String name;
-		int owner;
-	}
+////	@Entity(name="ANIMAL_TABLE")
+//	@Entity
+//	@IdClass(AnimalId.class)
+//	public static class Animal {
+//		@Id 
+//		private String name;
+//		
+//		@Id 
+//		@ManyToOne 
+//		@JoinColumn(name="OWNER_ID") 
+//		private Person owner;
+//		
+//		private String race;
+//		
+//		public String getName() {
+//			return this.name;
+//		}
+//		public void setName(String name) {
+//			this.name = name;
+//		}
+//		public Person getOwner() {
+//			return this.owner;
+//		}
+//		public void setOwner(Person owner) {
+//			this.owner = owner;
+//		}
+//		
+//		public String getRace() {
+//			return this.race;
+//		}
+//		public void setRace(String race) {
+//			this.race = race;
+//		}
+//	}
+//	
+//	public static class AnimalId implements Serializable {
+//		public AnimalId(String name, int owner) {
+//			super();
+//			this.name = name;
+//			this.owner = owner;
+//		}
+//		public AnimalId() {
+//			super();
+//		}
+//		private String name;
+//		private int owner;
+//	}
 
 	@Id
 	@GeneratedValue
@@ -67,7 +120,23 @@ public class Person {
 
 	@Audited
 	private String	surname;
+	
+	@Audited
+	private String	lastname;
 
+	public String getLastname() {
+		return this.lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+//	@Audited
+//	@OneToMany
+//	protected Set<Person.Animal> animals;
+	
+	
 	@Audited(withModifiedFlag=false)
 	@ManyToOne
 	private Address	address;
